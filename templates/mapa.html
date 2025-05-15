@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Casitas en Bolivia - Mapa 3D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+    .marker {
+      background-image: url('static/images/casita.png');
+      background-size: cover;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+  <script>
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://api.maptiler.com/maps/bright-v2/style.json?key=Z7CaWt2Pnpr30b9Xw8y6', // Reemplaza TU_API_KEY
+      center: [-64.685, -16.290],
+      zoom: 5.2,
+      pitch: 0,
+      bearing: -17,
+      antialias: true
+    });
+
+    const casitas = [
+      {
+        id: 1,
+        nombre: "Casa Verde",
+        tipo: "Residencial",
+        habitantes: 4,
+        lat: -17.375,
+        lng: -66.165
+      },
+      {
+        id: 2,
+        nombre: "Casa Roja",
+        tipo: "Comercial",
+        habitantes: 0,
+        lat: -17.405,
+        lng: -66.145
+      },
+      {
+        id: 3,
+        nombre: "Casa Azul",
+        tipo: "Mixta",
+        habitantes: 2,
+        lat: -17.385,
+        lng: -66.155
+      }
+    ];
+
+    map.on('load', () => {
+      // Mostrar casitas
+      casitas.forEach(casa => {
+        const el = document.createElement('div');
+        el.className = 'marker';
+
+        const popup = new maplibregl.Popup({ offset: 25 }).setHTML(`
+          <h3>${casa.nombre}</h3>
+          <p><strong>Tipo:</strong> ${casa.tipo}
+
+          <strong>Habitantes:</strong> ${casa.habitantes}</p>
+        `);
+
+        new maplibregl.Marker(el)
+          .setLngLat([casa.lng, casa.lat])
+          .setPopup(popup)
+          .addTo(map);
+      });
+
+      
+     
+
+      
+    });
+  </script>
+</body>
+</html>
