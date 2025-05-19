@@ -17,6 +17,7 @@ def conectar_db():
         print("⚠️ No se pudo conectar a la base de datos:", e)
         return None
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -28,6 +29,10 @@ def index():
 @app.route('/mapa')
 def mapa():
     return render_template('mapa.html')
+
+@app.route('/buscar')
+def prueba():
+    return render_template('buscar.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

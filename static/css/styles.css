@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #e6e8ed;
+  background-color: #0c192c;
   color: #666666;
   font-family: "Montserrat", sans-serif;
 }
@@ -52,12 +52,12 @@ body {
 .header {
   grid-area: header;
   height: 70px;
-  background-color: #ffffff;
+  background-color: #1f4068;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px 0 30px;
-  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 7px -4px #c3deff;
 }
 
 .menu-icon {
@@ -70,11 +70,12 @@ body {
 #sidebar {
   grid-area: sidebar;
   height: 100%;
-  background-color: #21232d;
-  color: #9799ab;
+  background-color: #1f4068;
+  color: #ffffff;
   overflow-y: auto;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
+  box-shadow: 6px 0 7px -4px #c3deff;
 }
 
 .sidebar-title {
@@ -151,17 +152,17 @@ body {
   gap: 20px;
   margin: 20px 0;
 }
-
+/*de los de ariba*/
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 25px;
-  background-color: #ffffff;
+  background-color: #ffffffce;
   box-sizing: border-box;
   border: 1px solid #d2d2d3;
   border-radius: 5px;
-  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 7px -4px #c3deff;
 }
 
 .card:first-child {
@@ -204,16 +205,16 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-
+/*card de bashboard*/
 .charts-card {
-  background-color: #ffffff;
+  background-color: #ffffffce;
   margin-bottom: 20px;
   padding: 25px;
   box-sizing: border-box;
   -webkit-column-break-inside: avoid;
   border: 1px solid #d2d2d3;
   border-radius: 5px;
-  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 7px -4px #c3deff;
 }
 
 .chart-title {

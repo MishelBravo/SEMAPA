@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>SEMAPA DASHBOARD</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">email</span>
+          <span class="material-icons-outlined">account_circle</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">inventory</span> Semapa Cochabamba
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="/principal_semapa">
+              <span class="material-icons-outlined">dashboard</span> Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/mapa">
+              <span class="material-icons-outlined">inventory_2</span> Mapa
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/buscar" >
+              <span class="material-icons-outlined">poll</span> Buscar
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/prueba">
+              <span class="material-icons-outlined">fact_check</span> Consultas
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">settings</span> Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">DASHBOARD</p>
+        </div>
+
+        <div class="container">
+          <main class="table_consul" id="country_table">
+              <section class="section_left">
+                  <h3>Ingreso de Datos</h3>
+                  <div class="form-row">
+                      <div>
+                          <label for="nombre_socio">Nombre del Socio</label>
+                          <input type="text" id="nombre_socio" placeholder="Ejemplo: Juan Pérez">
+                      </div>
+                      <div>
+                          <label for="numero_contrato">Número de Contrato</label>
+                          <input type="text" id="numero_contrato" placeholder="Ejemplo: 123456">
+                      </div>
+                      <div>
+                          <label for="fecha_lectura">Fecha de Lectura</label>
+                          <input type="date" id="fecha_lectura">
+                      </div>
+                  </div>
+                  <!-- Botón abajo -->
+                  <button class="botton_Conectar">
+                      Aceptar
+                  </button>
+              </section>
+
+
+          </main>
+
+          <!-- Tabla de vuelos disponibles -->
+          <main class="table" id="customers_table">
+              <section class="table__header">
+                  <h1>Vuelos Disponibles</h1>
+                  <div class="input-group">
+                      <input type="search" placeholder="Buscar datos...">
+                      <img src="/static/images/search.png" alt="">
+                  </div>
+                  <div class="export__file">
+                      <label for="export-file" class="export__file-btn" title="Exportar archivo"></label>
+                      <input type="checkbox" id="export-file">
+                      <div class="export__file-options">
+                          <label>Exportar como &nbsp; &#10140;</label>
+                          <label id="toAviones">AVIONES <img src="/static/images/AvionLogo.png" alt=""></label>
+                          <label id="toConsultas">CONSULTAS <img src="/static/images/Consulta.png" alt=""></label>
+                          <label id="toJSON">JSON <img src="/static/images/json.png" alt=""></label>
+                          <label id="toCSV">CSV <img src="/static/images/csv.png" alt=""></label>
+                          <label id="toEXCEL">EXCEL <img src="/static/images/excel.png" alt=""></label>
+                      </div>
+                  </div>
+              </section>
+              <section class="table__body">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Id <span class="icon-arrow">&UpArrow;</span></th>
+                              <th>Nombre Vuelo <span class="icon-arrow">&UpArrow;</span></th>
+                              <th>Fecha Salida <span class="icon-arrow">&UpArrow;</span></th>
+                              <th>Hora Salida <span class="icon-arrow">&UpArrow;</span></th>
+                              <th>Estado <span class="icon-arrow">&UpArrow;</span></th>
+                              <th>Realizar <span class="icon-arrow">&UpArrow;</span></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <!-- Datos de ejemplo -->
+                          <tr>
+                              <td>1</td>
+                              <td>Vuelo 101</td>
+                              <td>2025-05-20</td>
+                              <td>08:00</td>
+                              <td>Confirmado</td>
+                              <td><button>Ver</button></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </section>
+          </main>
+        </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/static/js/scripts.js"></script>
+
+    <!-- Puedes enlazar un JS vacío si deseas mantener la estructura -->
+    <script src="/static/js/prueba.js"></script>
+    
+  </body>
+</html>
