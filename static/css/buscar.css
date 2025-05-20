@@ -15,8 +15,8 @@
 
 main.table {
     width: 83vw;
-    height: 27vh;
-    background-color: #fff5;
+    height: 35vh;
+    background-color:  rgba(255, 255, 255, 0.103);
 
     backdrop-filter: blur(7px);
     box-shadow: 0 .4rem .8rem #0005;
@@ -30,15 +30,17 @@ main.table {
     padding: 1rem;
 }
 
+/*Encabezado de Resultados*/
 .table__header {
     width: 100%;
-    height: 10%;
-    background-color: #fff4;
+    height: 27%;
+    background-color: #ffffff7b;
     padding: .8rem 1rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 1rem;
 }
 
 .table__header .input-group {
@@ -240,9 +242,9 @@ thead th.active,tbody td.active {
 
 .export__file .export__file-btn {
     display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    background: #fff6 url(images/export.png) center / 80% no-repeat;
+    width: 3rem;
+    height: 3rem;
+    background: #fff6 url(/static/images/export.png) center / 80% no-repeat;
     border-radius: 50%;
     transition: .2s ease-in-out;
 }
@@ -310,11 +312,11 @@ thead th.active,tbody td.active {
     height: auto;
 }
 
-/* Cabeceza */
+/* Cabeceza  DE CONSULTAS*/
 main.table_consul {
     width: 83vw;
     height: auto; /* Altura automática para ajustarse al contenido */
-    background-color: #fff5;
+    background-color: rgba(255, 255, 255, 0.103);
     backdrop-filter: blur(7px);
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .8rem;
@@ -452,7 +454,7 @@ label {
     position: relative;
     display: inline-block;
     width: 400px; /* Ancho ajustado */
-    height: 45px; /* Alto ajustado */
+    height: 50px; /* Alto ajustado */
     padding: 0.2rem; /* Padding ajustado */
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -464,8 +466,8 @@ label {
     border: none;
     overflow: hidden;
     transition: .5s;
-    margin-top: 0.5vw;
-    margin-left: 650px; /* Empuja el botón hacia la derecha */
+    margin-top: 0.4vw;
+    margin-left: 560px; /* Empuja el botón hacia la derecha */
 }
 
 .botton_Conectar:hover {
@@ -558,3 +560,67 @@ label {
         bottom: 100%;
     }
 }
+/*Stilos mas */
+
+/* Aplica a todos los inputs dentro de .form-row */
+.table_consul .form-row input {
+  border: 2px solid white; /* bordes blancos */
+  background-color: #f0f0f0; /* color de fondo claro opcional */
+  color: #000; /* texto oscuro para contraste */
+  padding: 15px; /* aumenta la altura del input */
+  height: 50px; /* o puedes usar min-height */
+  font-size: 20px;
+  border-radius: 8px; /* bordes redondeados */
+  width: 100%; /* que ocupen todo el contenedor */
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Ajustes opcionales para el label */
+.table_consul .form-row label  {
+  font-weight: bold;
+  color: white;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 120%;
+}
+.main-title p,
+.table_consul h3 {
+  color: white;
+  font-size: 180%;
+}
+
+.material-icons-outlined {
+  color: white;
+}
+
+#customers_table {
+  color: black; /* Todo el texto de la tabla será negro */
+  font-size: 110%;
+}
+
+/*Cambiar el color solo de los encabezados (thead) de la tabla*/
+#customers_table thead th {
+  background-color: #01aebf; /* <- Esto es el color de fondo de la cabecera */
+}
+
+/* Estilo del contenedor de la marca */
+.sidebar-brand {
+  display: flex;
+  align-items: flex-start;       /* Alineado arriba si hay varios elementos */
+  justify-content: flex-start;   /* Alineado a la izquierda */
+  gap: 10px;
+  padding: 10px;
+
+  /* Movimiento a la izquierda */
+  position: relative;
+  left: -45px;  /* Ajusta este valor según cuánto quieras mover */
+}
+
+/* Estilo del logo */
+.sidebar-logo {
+  height: 19rem;
+  width: auto;
+}
+
+

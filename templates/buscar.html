@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/buscar.css">
     <link rel="stylesheet" href="/static/css/styles.css">
 
-    <link rel="stylesheet" href="/static/css/style.css">
 
   </head>
   <body>
@@ -40,7 +40,7 @@
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
-            <span class="material-icons-outlined">inventory</span> Semapa Cochabamba
+            <img src="/static/images/Logo.png" alt="Logo Semapa Cochabamba" class="sidebar-logo">
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -105,7 +105,6 @@
                   </button>
               </section>
 
-
           </main>
 
           <!-- Tabla de vuelos disponibles -->
@@ -121,11 +120,9 @@
                       <input type="checkbox" id="export-file">
                       <div class="export__file-options">
                           <label>Exportar como &nbsp; &#10140;</label>
-                          <label id="toAviones">AVIONES <img src="/static/images/AvionLogo.png" alt=""></label>
-                          <label id="toConsultas">CONSULTAS <img src="/static/images/Consulta.png" alt=""></label>
+                          <label id="toAviones">PDF <img src="/static/images/imprePDF.png" alt=""></label>
+                          <label id="toConsultas">ROLLO <img src="/static/images/Consulta.png" alt=""></label>
                           <label id="toJSON">JSON <img src="/static/images/json.png" alt=""></label>
-                          <label id="toCSV">CSV <img src="/static/images/csv.png" alt=""></label>
-                          <label id="toEXCEL">EXCEL <img src="/static/images/excel.png" alt=""></label>
                       </div>
                   </div>
               </section>
