@@ -42,3 +42,115 @@ body{
         clip-path: polygon(0 60%, 16% 65% ,34% 66% , 51% 62% , 67% 50%, 84% 45% , 100% 46% , 100% 100% , 0% 100%);
     }
 }
+
+/* Estilos para el botón */
+.botton_Ingresar {
+    position: relative;
+    display: inline-block;
+    width: 400px; /* Ancho ajustado */
+    height: 50px; /* Alto ajustado */
+    padding: 0.2rem; /* Padding ajustado */
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 1rem; /* Ajuste de tamaño de texto */
+    background-color: #03e8f45d; /* Fondo verde */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 20vw;
+    margin-left: -100px; /* Empuja el botón hacia la derecha */
+}
+
+.botton_Ingresar:hover {
+    background-color: #03e9f4; /* Cambio de color al hacer hover */
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 300px #03e9f4;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+/* Animación de bordes */
+.botton_Ingresar span {
+    position: absolute;
+    display: block;
+}
+
+.botton_Ingresar span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: animate1 1s infinite;
+}
+
+@keyframes animate1 {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.botton_Ingresar span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: animate2 1s infinite;
+    animation-delay: .25s;
+}
+
+@keyframes animate2 {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+.botton_Ingresar span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: animate3 1s infinite;
+    animation-delay: .5s;
+}
+
+@keyframes animate3 {
+    0% {
+        right: -100%;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+.botton_Ingresar span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: animate4 1s infinite;
+    animation-delay: .75s;
+}
+
+@keyframes animate4 {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
