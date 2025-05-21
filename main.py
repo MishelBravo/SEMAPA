@@ -41,7 +41,7 @@ def contar_unidades_educativas():
 # Redirigimiento a pestañas
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/principal_semapa')    
 def index():
