@@ -19,11 +19,17 @@ function closeSidebar() {
 
 // ---------- CHARTS ----------
 
-// BAR CHART
 const barChartOptions = {
   series: [
     {
-      data: [10, 8, 6, 4, 2],
+      data: [
+        364000000,  // ADELA ZAMUDIO
+        208000000,  // MOLLE
+        182000000,  // ITOCTA
+        416000000,  // VALLE HERMOSO
+        468000000,  // TUNARI
+        260000000   // ALEJO CALATAYUD
+      ],
     },
   ],
   chart: {
@@ -33,7 +39,7 @@ const barChartOptions = {
       show: false,
     },
   },
-  colors: ['#246dec', '#cc3c43', '#367952', '#f5b74f', '#4f35a1'],
+  colors: ['#246dec', '#cc3c43', '#367952', '#f5b74f', '#4f35a1' , '#8b55a2'],
   plotOptions: {
     bar: {
       distributed: true,
@@ -49,11 +55,11 @@ const barChartOptions = {
     show: false,
   },
   xaxis: {
-    categories: ['Laptop', 'Phone', 'Monitor', 'Headphones', 'Camera'],
+    categories: ['ADELA ZAMUDIO', 'MOLLE', 'ITOCTA', 'VALLE HERMOSO', 'TUNARI', 'ALEJO CALATAYUD'],
   },
   yaxis: {
     title: {
-      text: 'Count',
+      text: 'Consumo de Agua (litros)',
     },
   },
 };
@@ -64,16 +70,16 @@ const barChart = new ApexCharts(
 );
 barChart.render();
 
-// AREA CHART
+// AREA CHART - Consumo de agua Cochabamba (cada 10 días)
 const areaChartOptions = {
   series: [
     {
-      name: 'Purchase Orders',
-      data: [31, 40, 28, 51, 42, 109, 100],
+      name: 'Consumo Residencial (m³)',
+      data: [12500, 13100, 12700, 13300, 13800, 13950],
     },
     {
-      name: 'Sales Orders',
-      data: [11, 32, 45, 32, 34, 52, 41],
+      name: 'Consumo Comercial (m³)',
+      data: [8200, 8600, 8450, 8800, 9100, 9300],
     },
   ],
   chart: {
@@ -88,22 +94,23 @@ const areaChartOptions = {
     enabled: false,
   },
   stroke: {
-    curve: 'smooth',
+    curve: 'smooth', // Hace que las líneas tengan forma de curva
+    width: 3,
   },
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  labels: ['01/Abr', '11/Abr', '21/Abr', '01/May', '11/May', '21/May'],
   markers: {
-    size: 0,
+    size: 4,
   },
   yaxis: [
     {
       title: {
-        text: 'Purchase Orders',
+        text: 'Consumo Residencial (m³)',
       },
     },
     {
       opposite: true,
       title: {
-        text: 'Sales Orders',
+        text: 'Consumo Comercial (m³)',
       },
     },
   ],
@@ -111,6 +118,7 @@ const areaChartOptions = {
     shared: true,
     intersect: false,
   },
+  
 };
 
 const areaChart = new ApexCharts(

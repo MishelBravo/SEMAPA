@@ -163,9 +163,15 @@
 
     <!-- Scripts -->
     <script>
-      // Generar 25 botones en columna vertical
+      // Generar 25 botones, omitiendo los que no existen
       const buttonContainer = document.getElementById("button-column");
+
+      // Lista de botones que NO se deben crear
+      const botonesFaltantes = [5, 16, 25];
+
       for (let i = 1; i <= 25; i++) {
+        if (botonesFaltantes.includes(i)) continue; // saltar los botones faltantes
+
         const btn = document.createElement("button");
         btn.textContent = `Consulta ${i}`;
         btn.onclick = () => loadJSON(i);
@@ -174,7 +180,7 @@
 
       async function loadJSON(num) {
         try {
-          const response = await fetch(`/data${num}.json`);
+          const response = await fetch(`json/data${num}.json`);
           if (!response.ok) throw new Error("Archivo no encontrado");
 
           const data = await response.json();
@@ -197,17 +203,20 @@
           const headerRow = headers.map(h => `<th>${h}</th>`).join('');
           thead.innerHTML = `<tr>${headerRow}</tr>`;
 
-          // Filas de datos
+          // Filas de datos (forma optimizada)
+          let rowsHTML = '';
           data.forEach(row => {
             const rowHTML = headers.map(key => `<td>${row[key]}</td>`).join('');
-            tbody.innerHTML += `<tr>${rowHTML}</tr>`;
+            rowsHTML += `<tr>${rowHTML}</tr>`;
           });
+          tbody.innerHTML = rowsHTML;
 
         } catch (error) {
           alert("No se pudo cargar el archivo JSON: " + error.message);
         }
       }
     </script>
+
     <!-- Scripts -->
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>

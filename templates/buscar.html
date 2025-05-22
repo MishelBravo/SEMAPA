@@ -121,11 +121,11 @@
                       <input type="checkbox" id="export-file">
                       <div class="export__file-options">
                           <label>Exportar como &nbsp; &#10140;</label>
-                          <label id="toAviones">PDF <img src="/static/images/imprePDF.png" alt=""></label>
-                          <label id="toConsultas">ROLLO <img src="/static/images/rolloFactura.png" alt=""></label>
-                          <label id="toAviones">CORREO <img src="/static/images/correo.png" alt=""></label>
-                          <label id="toConsultas">SMS <img src="/static/images/sms.png" alt=""></label>
-                          
+                          <label id="facturaPDF">PDF <img src="/static/images/imprePDF.png" alt=""></label>
+                          <label id="facturaRollo">ROLLO <img src="/static/images/rolloFactura.png" alt=""></label>
+                          <label id="correo">CORREO <img src="/static/images/correo.png" alt=""></label>
+                          <label id="sms">SMS <img src="/static/images/sms.png" alt=""></label>
+                          <label id="whatsapp">WHATSAPP <img src="/static/images/sms.png" alt=""></label>
                       </div>
                   </div>
               </section>
@@ -243,6 +243,329 @@
       });
     </script>
 
+
+    <script>
+      document.getElementById('facturaPDF').addEventListener('click', () => {
+        mostrarFactura();
+      });
+      document.getElementById('facturaRollo').addEventListener('click', () => {
+        mostrarFacturaRollo();
+      });
+      document.getElementById('correo').addEventListener('click', () => {
+        mostrarFactura();
+      });
+      document.getElementById('sms').addEventListener('click', () => {
+        mostrarFactura();
+      });
+      document.getElementById('whatsapp').addEventListener('click', () => {
+        mostrarFactura();
+      });
+
+      function mostrarFactura() {
+        // Obtener los datos de la tabla (primer fila, por ejemplo)
+        const fila = document.querySelector('.table__body tbody tr');
+        if (!fila) {
+          alert("No hay datos para generar la factura");
+          return;
+        }
+
+        const celdas = fila.querySelectorAll('td');
+
+        // Extraemos solo los campos que queremos (según la estructura que tienes en la tabla)
+        const numeroContrato = celdas[0]?.textContent || '';
+        const nombreUsuario = celdas[1]?.textContent || '';
+        const telefono = celdas[2]?.textContent || '';
+        const correoElectronico = celdas[3]?.textContent || '';
+        // consumo está en celdas[7]
+        const consumo = celdas[7]?.textContent || '';
+        // tipoTarifa está en celdas[9]
+        const tipoTarifa = celdas[9]?.textContent || '';
+
+        // Construir la plantilla HTML de la factura con esos datos
+        const fechaActual = new Date().toLocaleDateString('es-ES');
+
+        const facturaHtml = `
+          <!DOCTYPE html>
+          <html lang="es">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Factura #${numeroContrato}</title>
+            <style>
+              @page {
+                size: A4 portrait;
+                margin: 10mm;
+              }
+
+              @media print {
+                body {
+                  margin: 0;
+                  padding: 0;
+                  background: white;
+                }
+
+                .factura {
+                  page-break-after: always;
+                  width: 100%;
+                  height: 50%;
+                  padding: 20px;
+                  box-sizing: border-box;
+                }
+
+                .no-print {
+                  display: none;
+                }
+              }
+
+              body {
+                font-family: Arial, sans-serif;
+                background: #f0f0f0;
+                margin: 0;
+                padding: 20px;
+              }
+
+              .factura {
+                background: white;
+                padding: 20px;
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto 20px auto;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                border-radius: 5px;
+              }
+
+              .text-center { text-align: center; }
+              .text-right { text-align: right; }
+              .mb-3 { margin-bottom: 15px; }
+              .logo { max-width: 150px; margin: 0 auto; display: block; }
+              .divider { border-top: 1px dashed #000; margin: 10px 0; }
+              .small { font-size: 0.85em; }
+
+              table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 10px 0;
+              }
+
+              th, td {
+                text-align: left;
+                padding: 4px;
+                font-size: 0.95em;
+              }
+
+              .text-right { text-align: right; }
+            </style>
+          </head>
+          <body>
+            <div class="factura">
+              <img src="http://localhost:5000/static/images/LogoRollo.png" alt="Logo" class="logo mb-3">
+
+              <div class="text-center mb-3">
+                <div class="small">Av. Principal #123</div>
+                <div class="small">Tel: 123456789</div>
+                <div class="small">NIT: 1234567890</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div>Factura #: ${numeroContrato}</div>
+              <div>Fecha: ${fechaActual}</div>
+
+              <div class="mb-3">
+                <div><strong>Cliente:</strong> ${nombreUsuario}</div>
+                <div><strong>Correo:</strong> ${correoElectronico}</div>
+                <div><strong>Teléfono:</strong> ${telefono}</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Consumo</th>
+                    <th class="text-right">Tipo Tarifa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>${consumo}</td>
+                    <td class="text-right">${tipoTarifa}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td class="text-right" colspan="1"><strong>Total a pagar:</strong></td>
+                    <td class="text-right"><strong>$25.00</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
+
+              <div class="divider"></div>
+
+              <div class="text-center small">
+                <div><strong>Forma de Pago:</strong> Efectivo</div>
+                <div class="mt-3 mb-3">
+                  <img src="/static/images/qr.png" alt="QR para transferencia" style="max-width: 150px;">
+                </div>
+                <div class="mt-2">¡Gracias por su tiempo!</div>
+              </div>
+            </div>
+          </body>
+          </html>
+        `;
+        
+
+        // Abrir una nueva ventana con la factura para mostrar/ imprimir
+        const ventanaFactura = window.open('', '_blank', 'width=900,height=700');
+        ventanaFactura.document.write(facturaHtml);
+        ventanaFactura.document.close();
+
+        // Opcional: si quieres que directamente se abra el diálogo de impresión
+        ventanaFactura.focus();
+        ventanaFactura.print();
+          
+      }
+
+
+      function mostrarFacturaRollo() {
+        // Obtener los datos de la tabla (primer fila)
+        const fila = document.querySelector('.table__body tbody tr');
+        if (!fila) {
+          alert("No hay datos para generar la factura");
+          return;
+        }
+
+        const celdas = fila.querySelectorAll('td');
+
+        const numeroContrato = celdas[0]?.textContent.trim() || '';
+        const nombreUsuario = celdas[1]?.textContent.trim() || '';
+        const telefono = celdas[2]?.textContent.trim() || '';
+        const direccion = celdas[4]?.textContent.trim() || '';
+        const consumoTexto = celdas[7]?.textContent.trim() || '0'; // Ajusta si el consumo está en otra columna
+        const consumo = parseFloat(consumoTexto.replace(',', '.')) || 0;
+
+        const totalCalculado = (consumo * 1.76).toFixed(2); // Cálculo con 2 decimales
+        const fechaActual = new Date().toLocaleString('es-ES');
+
+        const facturaHtml = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Factura #${numeroContrato}</title>
+          <style>
+            @page {
+              size: 80mm auto;
+              margin: 0;
+            }
+            @media print {
+              body {
+                width: 80mm;
+                margin: 0;
+                padding: 0;
+                background: white;
+              }
+              .factura {
+                padding: 10px;
+              }
+              .no-print {
+                display: none;
+              }
+            }
+            body {
+              font-family: Arial, sans-serif;
+              margin: 0 auto;
+              padding: 20px;
+              background: #f0f0f0;
+            }
+            .factura {
+              background: white;
+              padding: 20px;
+              max-width: 80mm;
+              margin: 0 auto;
+              box-shadow: 0 0 10px rgba(0,0,0,0.1);
+              border-radius: 5px;
+            }
+            .text-center { text-align: center; }
+            .text-right { text-align: right; }
+            .mb-3 { margin-bottom: 15px; }
+            .logo { max-width: 200px; margin: 0 auto; display: block; }
+            .divider { border-top: 1px dashed #000; margin: 10px 0; }
+            .small { font-size: 0.8em; }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 10px 0;
+            }
+            th, td {
+              text-align: left;
+              padding: 3px;
+              font-size: 0.9em;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="factura">
+            <img src="http://localhost:5000/static/images/LogoRollo.png" alt="Logo" class="logo mb-3" />
+            <div class="text-center mb-3">
+              <div class="small">Av. Principal #123</div>
+              <div class="small">Tel: 123456789</div>
+              <div class="small">NIT: 1234567890</div>
+            </div>
+            <div class="divider"></div>
+            <div class="mb-3">
+              <div>Factura #: ${numeroContrato}</div>
+              <div>Fecha: ${fechaActual}</div>
+            </div>
+            <div class="mb-3">
+              <div><strong>Cliente:</strong> ${nombreUsuario}</div>
+              <div><strong>Dirección:</strong> ${direccion}</div>
+              <div><strong>Teléfono:</strong> ${telefono}</div>
+            </div>
+            <div class="divider"></div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Consumo</th>
+                  <th class="text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>${consumo} m³</td>
+                  <td class="text-right">$${totalCalculado}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="1" class="text-right"><strong>Total a pagar:</strong></td>
+                  <td class="text-right"><strong>$${totalCalculado}</strong></td>
+                </tr>
+              </tfoot>
+            </table>
+            <div class="divider"></div>
+            <div class="text-center small">
+              <div><strong>Forma de Pago:</strong> Efectivo</div>
+              <div class="mt-3 mb-3">
+                <img src="http://localhost:5000/static/images/qr.png" alt="QR para transferencia" style="max-width: 150px;" />
+              </div>
+              <div class="mt-2">¡Gracias por su tiempo!</div>
+            </div>
+          </div>
+        </body>
+        </html>
+        `;
+
+        const ventanaFactura = window.open('', '_blank', 'width=400,height=600');
+        ventanaFactura.document.write(facturaHtml);
+        ventanaFactura.document.close();
+        ventanaFactura.focus();
+        ventanaFactura.print();
+      }
+
+
+    </script>
 
 
     <!-- Scripts -->
