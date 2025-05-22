@@ -100,9 +100,10 @@
                       </div>
                   </div>
                   <!-- Botón abajo -->
-                  <button class="botton_Conectar">
+                  <button id="btnAceptar" class="botton_Conectar">
                       Aceptar
                   </button>
+
               </section>
 
           </main>
@@ -129,32 +130,46 @@
                   </div>
               </section>
               <section class="table__body">
-                  <table>
-                      <thead>
-                          <tr>
-                              <th>Numero Contrato<span class="icon-arrow">&UpArrow;</span></th>
-                              <th>Nombre Usuario<span class="icon-arrow">&UpArrow;</span></th>
-                              <th>Fecha Lectura<span class="icon-arrow">&UpArrow;</span></th>
-                              <th>Fecha Emision Factura <span class="icon-arrow">&UpArrow;</span></th>
-                              <th>Consumo <span class="icon-arrow">&UpArrow;</span></th>
-                              <th>Tipo Tarifa <span class="icon-arrow">&UpArrow;</span></th>
-                              <th>Nombre Antena<span class="icon-arrow">&UpArrow;</span></th>
-                              <th>Nombre Zona<span class="icon-arrow">&UpArrow;</span></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <!-- Datos de ejemplo -->
-                          <tr>
-                              <td>1</td>
-                              <td>Vuelo 101</td>
-                              <td>2025-05-20</td>
-                              <td>08:00</td>
-                              <td>Confirmado</td>
-                              <td><button>Ver</button></td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Numero Contrato<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Nombre Usuario<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Telefono<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>CorreoElectronico<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Tipo Persona<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Fecha Lectura<span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Fecha Emision Factura <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Consumo <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>MAC Medidor <span class="icon-arrow">&UpArrow;</span></th>
+                            <th>Tipo Tarifa <span class="icon-arrow">&UpArrow;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if resultado and resultado.lecturas %}
+                            {% for lectura in resultado.lecturas %}
+                                <tr>
+                                    <td>{{ resultado.numeroContrato }}</td>
+                                    <td>{{ resultado.usuario.nombre }}</td>
+                                    <td>{{ resultado.usuario.telefono }}</td>
+                                    <td>{{ resultado.usuario.correoelectronico }}</td>
+                                    <td>{{ resultado.usuario.tipopersona }}</td>
+                                    <td>{{ lectura.fechaMedidor[:10] }}</td>
+                                    <td>{{ resultado.fechaInstalacion[:10] }}</td>
+                                    <td>{{ lectura.consumo }}</td>
+                                    <td>{{ lectura.macMedidor }}</td>
+                                    <td>{{ resultado.tarifario.tipo }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="10">No se encontraron registros para los criterios ingresados.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </section>
+
           </main>
         </div>
       </main>
@@ -162,14 +177,80 @@
 
     </div>
 
+    <script>
+      document.getElementById('btnAceptar').addEventListener('click', async function () {
+          const nombreSocio = document.getElementById('nombre_socio').value.trim();
+          const numeroContrato = document.getElementById('numero_contrato').value.trim();
+          const fechaLectura = document.getElementById('fecha_lectura').value;
+
+          if (!fechaLectura) {
+              alert("Por favor, ingresa una fecha válida.");
+              return;
+          }
+
+          const payload = {
+              nombre_usuario: nombreSocio || null,
+              numero_contrato: numeroContrato || null,
+              fecha: fechaLectura
+          };
+
+          try {
+              const response = await fetch('/consulta_factura', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(payload)
+              });
+
+              const result = await response.json();
+
+              if (result.status === 'success') {
+                  const data = result.data;
+                  const tbody = document.querySelector('.table__body tbody');
+                  tbody.innerHTML = '';  // Limpiar tabla antes de agregar
+
+                  if (data.lecturas && data.lecturas.length > 0) {
+                      data.lecturas.forEach(lectura => {
+                          const fila = document.createElement('tr');
+                          fila.innerHTML = `
+                              <td>${data.numeroContrato}</td>
+                              <td>${data.usuario?.nombre || ''}</td>
+                              <td>${data.usuario?.telefono || ''}</td>
+                              <td>${data.usuario?.correoElectronico || ''}</td>
+                              <td>${data.usuario?.tipopersona || ''}</td>
+                              <td>${lectura.fechaMedidor.slice(0,10)}</td>
+                              <td>${data.fechaInstalacion ? data.fechaInstalacion.slice(0,10) : ''}</td>
+                              <td>${lectura.consumo}</td>
+                              <td>${lectura.macMedidor}</td>
+                              <td>${data.tarifario?.tipo || ''}</td>
+                          `;
+                          tbody.appendChild(fila);
+                      });
+                  } else {
+                      const filaVacia = document.createElement('tr');
+                      filaVacia.innerHTML = `<td colspan="10">No se encontraron registros para los criterios ingresados.</td>`;
+                      tbody.appendChild(filaVacia);
+                  }
+              } else {
+                  alert("❌ Error: " + result.message);
+              }
+
+          } catch (error) {
+              console.error("Error al consultar:", error);
+              alert("Ocurrió un error al enviar la solicitud.");
+          }
+      });
+    </script>
+
+
+
     <!-- Scripts -->
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
     <script src="/static/js/scripts.js"></script>
-
-    <!-- Puedes enlazar un JS vacío si deseas mantener la estructura -->
-    <script src="/static/js/json.js"></script>
     
+
   </body>
 </html>
