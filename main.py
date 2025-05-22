@@ -42,5 +42,9 @@ def mapa():
 def prueba():
     return render_template('buscar.html')
 
+@app.route('/consultas')
+def consultas():
+    return render_template('consultas.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
