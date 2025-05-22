@@ -24,24 +24,11 @@ def test_cassandra_connection():
 # Probar conexión al iniciar la app
 session = test_cassandra_connection()
 
-def contar_unidades_educativas():
-    try:
-        rows = session.execute("SELECT idUnidadesEducativas FROM UnidadesEducativas ALLOW FILTERING")
-        count = sum(1 for _ in rows)
-        print(f"📌 Total de Unidades Educativas consultadas: {count}")
-        return count
-    except Exception as e:
-        print(f"⚠️ Error al contar unidades educativas: {e}")
-        return None
-
-# Ejecutar la consulta al iniciar la app
-#total_unidades = contar_unidades_educativas()
-
 
 # Redirigimiento a pestañas
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/principal_semapa')    
 def index():
