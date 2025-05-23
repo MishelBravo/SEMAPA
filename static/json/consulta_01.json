@@ -1,0 +1,42 @@
+[
+    {
+        "Distrito": "Distrito 3",
+        "Hora": "8:00-16:00",
+        "Consumo (m³)": 39129549.38
+    },
+    {
+        "Distrito": "Distrito 7",
+        "Hora": "8:00-16:00",
+        "Consumo (m³)": 7231653.49
+    },
+    {
+        "Distrito": "Distrito 11",
+        "Hora": "8:00-16:00",
+        "Consumo (m³)": 17251070.17
+    },
+    {
+        "Distrito": "Distrito 15",
+        "Hora": "8:00-16:00",
+        "Consumo (m³)": 14325489.96
+    },
+    {
+        "Distrito": "Distrito 3",
+        "Hora": "16:00-24:00",
+        "Consumo (m³)": 11405282.31
+    },
+    {
+        "Distrito": "Distrito 7",
+        "Hora": "16:00-24:00",
+        "Consumo (m³)": 2123766.17
+    },
+    {
+        "Distrito": "Distrito 15",
+        "Hora": "16:00-24:00",
+        "Consumo (m³)": 4197601.96
+    },
+    {
+        "Distrito": "Distrito 11",
+        "Hora": "16:00-24:00",
+        "Consumo (m³)": 5081250.58
+    }
+]

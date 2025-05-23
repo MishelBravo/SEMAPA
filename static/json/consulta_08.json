@@ -1,0 +1,27 @@
+[
+    {
+        "Modelo": "ITC 100",
+        "Total": 5542,
+        "Zonas": "CONDEBAMBA, QUERU QUERU, TAMBORADA PUKARITA, VALLE HERMOSO"
+    },
+    {
+        "Modelo": "WP20",
+        "Total": 5532,
+        "Zonas": "CONDEBAMBA, QUERU QUERU, TAMBORADA PUKARITA, VALLE HERMOSO"
+    },
+    {
+        "Modelo": "Medidor 100% IoT",
+        "Total": 5557,
+        "Zonas": "CONDEBAMBA, QUERU QUERU, TAMBORADA PUKARITA, VALLE HERMOSO"
+    },
+    {
+        "Modelo": "OY1320 LoRaWAN",
+        "Total": 5665,
+        "Zonas": "CONDEBAMBA, QUERU QUERU, TAMBORADA PUKARITA, VALLE HERMOSO"
+    },
+    {
+        "Modelo": "Siconia WATER WM-NB",
+        "Total": 5455,
+        "Zonas": "CONDEBAMBA, QUERU QUERU, TAMBORADA PUKARITA, VALLE HERMOSO"
+    }
+]

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mapa de Casas - Leaflet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+  />
+  <style>
+    #map { height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script>
+    const map = L.map('map').setView([-17.39, -66.15], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const markers = L.markerClusterGroup();
+
+    fetch('/static/medidores_actualizados.geojson')
+      .then(res => res.json())
+      .then(data => {
+        data.features.forEach(feature => {
+          const [lng, lat] = feature.geometry.coordinates;
+          const marker = L.marker([lat, lng]);
+          marker.bindPopup(`
+            <strong>Nombre:</strong> ${feature.properties.nombre}<br>
+            <strong>Tipo:</strong> ${feature.properties.tipo}<br>
+            <strong>Acumulado:</strong> ${feature.properties.acumulado + " Lt"}<br>
+            <strong>Error:</strong> ${feature.properties.error}<br>
+          `);
+          markers.addLayer(marker);
+        });
+        map.addLayer(markers);
+      });
+      fetch('/static/cochabamba_border.geojson')
+      .then(res => res.json())
+      .then(borderData => {
+        L.geoJSON(borderData, {
+          // Estilo opcional si tienes polígonos (para el último feature del tipo Polygon)
+          style: function (feature) {
+            if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+              return {
+                color: 'blue',          // borde
+                weight: 3,              // grosor borde
+                fillColor: '#add8e6',   // color relleno azul suave
+                fillOpacity: 0.4,       // transparencia relleno
+                fill: true              // asegurar que el relleno está activo
+              };
+            }
+          },
+          // Para cada feature (punto o polígono)
+          onEachFeature: function (feature, layer) {
+            // Si es un punto, mostrar marcador con popup al hacer clic
+            if (feature.geometry.type === 'Point') {
+              const nombre = feature.properties.Nombre || feature.properties.nombre || 'Sin nombre';
+              const tipo = feature.properties.tipo || 'Desconocido';
+    
+              layer.bindPopup(`<strong>${nombre}</strong><br>Tipo: ${tipo}`);
+            }
+          },
+          // Para convertir puntos en marcadores Leaflet
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng);
+          }
+        }).addTo(map);
+      });
+    
+
+  </script>
+</body>
+</html>

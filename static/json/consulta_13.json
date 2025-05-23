@@ -1,0 +1,104 @@
+[
+    {
+        "Descripción": "Configuracion incorrecta del sensor o gateway",
+        "Distrito": "Distrito 2",
+        "Zona": "CONDEBAMBA",
+        "Nro_Reportes": 3
+    },
+    {
+        "Descripción": "Configuracion incorrecta del sensor o gateway",
+        "Distrito": "Distrito 12",
+        "Zona": "QUERU QUERU",
+        "Nro_Reportes": 3
+    },
+    {
+        "Descripción": "Problemas de firmware o software embebido",
+        "Distrito": "Distrito 2",
+        "Zona": "CONDEBAMBA",
+        "Nro_Reportes": 3
+    },
+    {
+        "Descripción": "Obstruccion o danio en el caudalimetro",
+        "Distrito": "Distrito 2",
+        "Zona": "CONDEBAMBA",
+        "Nro_Reportes": 2
+    },
+    {
+        "Descripción": "Manual",
+        "Distrito": "Distrito 14",
+        "Zona": "VALLE HERMOSO",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Fallo en la conectividad de red",
+        "Distrito": "Distrito 2",
+        "Zona": "CONDEBAMBA",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Fallo en la conectividad de red",
+        "Distrito": "Distrito 14",
+        "Zona": "VALLE HERMOSO",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Configuracion incorrecta del sensor o gateway",
+        "Distrito": "Distrito 14",
+        "Zona": "VALLE HERMOSO",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Configuracion incorrecta del sensor o gateway",
+        "Distrito": "Distrito 9",
+        "Zona": "TAMBORADA PUKARITA",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Obstruccion o danio en el caudalimetro",
+        "Distrito": "Distrito 12",
+        "Zona": "QUERU QUERU",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Obstruccion o danio en el caudalimetro",
+        "Distrito": "Distrito 9",
+        "Zona": "TAMBORADA PUKARITA",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Problemas de firmware o software embebido",
+        "Distrito": "Distrito 9",
+        "Zona": "TAMBORADA PUKARITA",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Problemas de firmware o software embebido",
+        "Distrito": "Distrito 12",
+        "Zona": "QUERU QUERU",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Desincronizacion de reloj (timestamp incorrecto)",
+        "Distrito": "Distrito 2",
+        "Zona": "CONDEBAMBA",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Desincronizacion de reloj (timestamp incorrecto)",
+        "Distrito": "Distrito 12",
+        "Zona": "QUERU QUERU",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Error en el backend o plataforma IoT",
+        "Distrito": "Distrito 12",
+        "Zona": "QUERU QUERU",
+        "Nro_Reportes": 1
+    },
+    {
+        "Descripción": "Falla en la alimentacion electrica",
+        "Distrito": "Distrito 2",
+        "Zona": "CONDEBAMBA",
+        "Nro_Reportes": 1
+    }
+]

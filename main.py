@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, redirect
+from flask import Flask, request, jsonify, render_template, redirect, send_from_directory
 from markupsafe import Markup  
 import folium
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -6,6 +6,7 @@ from apscheduler.events import EVENT_JOB_EXECUTED, EVENT_JOB_ERROR
 from datetime import datetime, timedelta
 import time
 from cassandra.cluster import Cluster
+
 
 app = Flask(__name__)
 
@@ -169,11 +170,16 @@ def consulta_factura_endpoint():
 
 
 #-----------------------------------------------------------------------------------------
+@app.route('/mapa2')
+def mapa2():
+    return render_template('index1.html')
+
+#-----------------------------------------------------------------------------------------
 
 # Redirigimiento a pestañas
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/principal_semapa')    
 def index():

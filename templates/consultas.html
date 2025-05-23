@@ -111,7 +111,7 @@
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/mapa">
+            <a href="/mapa2">
               <span class="material-icons-outlined">inventory_2</span> Mapa
             </a>
           </li>
@@ -180,7 +180,7 @@
 
       async function loadJSON(num) {
         try {
-          const response = await fetch(`json/data${num}.json`);
+          const response = await fetch(`/static/json/consulta_${num}.json`);
           if (!response.ok) throw new Error("Archivo no encontrado");
 
           const data = await response.json();

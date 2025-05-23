@@ -1,0 +1,22 @@
+[
+    {
+        "RadioBase": "LoRaWan-ParqueLincon",
+        "Zona": "CONDEBAMBA",
+        "Conexiones": 60185
+    },
+    {
+        "RadioBase": "LoRaWan-ParqueVial",
+        "Zona": "QUERU QUERU",
+        "Conexiones": 26622
+    },
+    {
+        "RadioBase": "LoRaWan-Petrolera",
+        "Zona": "TAMBORADA PUKARITA",
+        "Conexiones": 22029
+    },
+    {
+        "RadioBase": "LoRaWan-Teleferico",
+        "Zona": "VALLE HERMOSO",
+        "Conexiones": 11164
+    }
+]

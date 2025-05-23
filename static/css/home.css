@@ -15,6 +15,7 @@ body{
 
 .content{
     position: relative;
+    margin-left: 200px;
 }
 
 .content h2 {
@@ -43,12 +44,27 @@ body{
     }
 }
 
+
+.wrapper {
+    text-align: center;
+}
+
+
+
+/* Imagen centrada */
+.logo img {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 20px; /* Espacio entre imagen y texto */
+}
+
+
 /* Estilos para el botón */
 .botton_Ingresar {
     position: relative;
     display: inline-block;
-    width: 400px; /* Ancho ajustado */
-    height: 50px; /* Alto ajustado */
+    width: 500px; /* Ancho ajustado */
+    height: 60px; /* Alto ajustado */
     padding: 0.2rem; /* Padding ajustado */
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -60,8 +76,8 @@ body{
     border: none;
     overflow: hidden;
     transition: .5s;
-    margin-top: 20vw;
-    margin-left: -100px; /* Empuja el botón hacia la derecha */
+    margin-top: 30vw;
+    margin-left: -200px; /* Empuja el botón hacia la derecha */
 }
 
 .botton_Ingresar:hover {

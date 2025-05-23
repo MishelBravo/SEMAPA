@@ -1,0 +1,92 @@
+[
+    {
+        "Modelo": "ITC 100",
+        "Tipo de Falla": "Manual",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "OY1320 LoRaWAN",
+        "Tipo de Falla": "Fallo en la conectividad de red",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "WP20",
+        "Tipo de Falla": "Configuracion incorrecta del sensor o gateway",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "Siconia WATER WM-NB",
+        "Tipo de Falla": "Configuracion incorrecta del sensor o gateway",
+        "Cantidad Reportes": 2
+    },
+    {
+        "Modelo": "WP20",
+        "Tipo de Falla": "Obstruccion o danio en el caudalimetro",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "Medidor 100% IoT",
+        "Tipo de Falla": "Configuracion incorrecta del sensor o gateway",
+        "Cantidad Reportes": 4
+    },
+    {
+        "Modelo": "ITC 100",
+        "Tipo de Falla": "Problemas de firmware o software embebido",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "Siconia WATER WM-NB",
+        "Tipo de Falla": "Problemas de firmware o software embebido",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "OY1320 LoRaWAN",
+        "Tipo de Falla": "Obstruccion o danio en el caudalimetro",
+        "Cantidad Reportes": 2
+    },
+    {
+        "Modelo": "OY1320 LoRaWAN",
+        "Tipo de Falla": "Desincronizacion de reloj (timestamp incorrecto)",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "Siconia WATER WM-NB",
+        "Tipo de Falla": "Desincronizacion de reloj (timestamp incorrecto)",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "ITC 100",
+        "Tipo de Falla": "Obstruccion o danio en el caudalimetro",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "OY1320 LoRaWAN",
+        "Tipo de Falla": "Configuracion incorrecta del sensor o gateway",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "OY1320 LoRaWAN",
+        "Tipo de Falla": "Problemas de firmware o software embebido",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "WP20",
+        "Tipo de Falla": "Problemas de firmware o software embebido",
+        "Cantidad Reportes": 2
+    },
+    {
+        "Modelo": "Medidor 100% IoT",
+        "Tipo de Falla": "Error en el backend o plataforma IoT",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "OY1320 LoRaWAN",
+        "Tipo de Falla": "Falla en la alimentacion electrica",
+        "Cantidad Reportes": 1
+    },
+    {
+        "Modelo": "Siconia WATER WM-NB",
+        "Tipo de Falla": "Fallo en la conectividad de red",
+        "Cantidad Reportes": 1
+    }
+]
